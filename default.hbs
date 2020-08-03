@@ -47,6 +47,11 @@
         You've successfully subscribed to {{@site.title}}!
     </div>
 
+    <div class="subscribe-error-message">
+        <a class="subscribe-close" href="javascript:;"></a>
+        Your subscription link has expired. Please try subscribing again.
+    </div>
+
     <div id="subscribe" class="subscribe-overlay">
         <a class="subscribe-close-overlay" href="#"></a>
         <a class="subscribe-close-button" href="#"></a>
@@ -105,11 +110,20 @@
 
         $(document).ready(function () {
             if (action == 'subscribe') {
-                $('body').addClass("subscribe-success");
+                var success = getParameterByName('success');
+                if (success === 'false') {
+                    $('body').addClass("subscribe-error");
+                } else {
+                    $('body').addClass("subscribe-success");
+                }
             }
 
             $('.subscribe-success-message .subscribe-close').click(function () {
                 $('.subscribe-success-message').addClass('close');
+            });
+
+            $('.subscribe-error-message .subscribe-close').click(function () {
+                $('.subscribe-error-message').addClass('close');
             });
 
             // Reset form on opening subscrion overlay

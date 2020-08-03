@@ -2584,6 +2584,7 @@ Usage (In Ghost editor):
 /* 10. Subscribe Message and Overlay
 /* ---------------------------------------------------------- */
 
+.subscribe-error-message,
 .subscribe-success-message {
     position: fixed;
     top: 0;
@@ -2598,15 +2599,57 @@ Usage (In Ghost editor):
     transform: translateY(-175%);
 }
 
+.subscribe-error-message {
+    background: var(--red);
+}
+
+.subscribe-error .subscribe-error-message,
 .subscribe-success .subscribe-success-message {
     visibility: visible;
     transform: translateY(0);
 }
 
+.subscribe-error-message.close,
 .subscribe-success-message.close {
     visibility: hidden;
     transition: all 1.35s cubic-bezier(0.19, 1, 0.22, 1);
     transform: translateY(-175%);
+}
+
+.subscribe-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    cursor: pointer;
+}
+
+.subscribe-close:before {
+    content: "";
+    position: absolute;
+    top: 32px;
+    right: 25px;
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: #fff;
+    opacity: 0.8;
+    transform: rotate(45deg);
+}
+
+.subscribe-close:after {
+    content: "";
+    position: absolute;
+    top: 32px;
+    right: 25px;
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: #fff;
+    opacity: 0.8;
+    transform: rotate(-45deg);
 }
 
 .subscribe-close-overlay {
